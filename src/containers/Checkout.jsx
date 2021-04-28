@@ -18,7 +18,7 @@ const Checkout = () => {
             <div className="Checkout-content">
             {cart.length>0?<h3>Lista de Pedidos:</h3>:<h3>Sin Pedidos...</h3>}
                 {cart.map(m=>(
-                <div className="Checkout-item">
+                <div className="Checkout-item" key={m.nano_id}>
                     <div className="Checkout-element">
                         <h4>{m.title}</h4>
                         <span>${m.price}</span>
