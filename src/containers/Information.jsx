@@ -1,4 +1,4 @@
-import React, { useRef ,useContext } from 'react'
+import React, { useRef ,useContext, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import AppContext from '../context/AppContext'
 import '../styles/components/Information.css'
@@ -8,10 +8,6 @@ const Information = () => {
     const form = useRef(null)
     const { cart } = state
     const history = useHistory()
-    const handleSumTotal = () => {
-        const reducer = (v,c)=> v+c.price
-        return cart.reduce(reducer,0)
-    }
     const handleSubmit = () => {
         const formData = new FormData(form.current)
         const buyer = {
@@ -28,6 +24,16 @@ const Information = () => {
         addToBuyer(buyer)
         history.push('/checkout/payment')
     }
+    const handleSumTotal = () => {
+        const reducer = (v,c)=> v+c.price
+        return cart.reduce(reducer,0)
+    }
+    useEffect(() => {
+        const amount = handleSumTotal()
+        if(!amount){
+            history.push('/')
+        }
+    }, [])
     return (
         <div className="Information">
             <div className="Information-content">
