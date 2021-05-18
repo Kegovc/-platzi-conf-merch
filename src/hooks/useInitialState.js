@@ -30,6 +30,7 @@ const useInitialState = () => {
     }
 
     return {
+        addNewOrder,
         addToBuyer,
         addToCart,
         removeFromCart,
