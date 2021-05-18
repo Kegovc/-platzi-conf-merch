@@ -58,7 +58,7 @@ const Payment = () => {
             <div className="Payment-content">
                 <h3>Resumen del pedido:</h3>
                 {cart.map(m=>(
-                <div className="Payment-item" key={m.nano_id}>
+                <div className="Payment-item" key={m.nano_id} onClick={()=> history.push('/checkout/success')}>
                     <div className="Payment-element">
                         <h4>{m.title}</h4>
                         <span>${m.price}</span>
